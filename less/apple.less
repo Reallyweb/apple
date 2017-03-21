@@ -1,0 +1,125 @@
+@cols:12;
+@num1:1000px;
+@num2:635px;
+.container{
+  &-fuild{
+    width:100%;
+    margin:auto;
+    border-top:2px solid  #fff;
+    border-bottom:2px solid  #fff;
+    .clear();
+  }
+  &-fuild>.row{
+    width:100%;
+    .clear();
+  }
+  &{
+    width:100%;
+    .clear();
+    margin:auto;
+  }
+  & >.row{
+    width:100%;
+    .clear();
+  }
+}
+.clear(){
+  & {
+    &:before,&:after{
+      content:"";
+      clear:both;
+      display:block;
+    }
+  }
+}
+.forebox{
+  width:100%;
+}
+.foreimg{
+  width:100%;
+  height:200px;
+  border-right:2px solid #fff;
+  box-sizing:border-box;
+}
+.foreimg:after{
+  content:"";
+  display:block;
+  clear:both;
+}
+.foreimg a{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.foreimg:nth-child(1) a{
+  background:url(../images/promos/accessories_small.jpg) no-repeat center;
+  background-size:cover;
+
+}
+.foreimg:nth-child(2) a{
+  background:url(../images/promos/airpods_small.jpg)  no-repeat center;
+  background-size:cover;
+ }
+.foreimg:nth-child(3) a{
+  background:url(../images/promos/ipad_pro_small.jpg)  no-repeat center;
+  background-size:cover;
+}
+.foreimg:nth-child(4) a{
+  background:url(../images/promos/iphone_upgrade_small.jpg) no-repeat center;
+  background-size:cover;
+}
+.for(s);
+@media screen and (min-width:@num2){
+  .foreimg{
+     width:50%;
+   }
+  //.forebox{
+  //    height:400px;
+  //  }
+
+  .for(m);
+  .foreimg:nth-child(1) a{
+    background:url(../images/promos/accessories_medium.jpg) no-repeat center;
+  }
+  .foreimg:nth-child(2) a{
+    background:url(../images/promos/airpods_medium.jpg) no-repeat center;
+  }
+  .foreimg:nth-child(3) a{
+    background:url(../images/promos/ipad_pro_medium.jpg) no-repeat center;
+  }
+  .foreimg:nth-child(4) a{
+    background:url(../images/promos/iphone_upgrade_medium.jpg) no-repeat center;
+  }
+}
+@media screen and (min-width:@num1){
+  .foreimg{
+    width:25%;
+  }
+  .for(l);
+  .foreimg:nth-child(1) a{
+    background:url(../images/promos/accessories_large.jpg) no-repeat center;
+  }
+  .foreimg:nth-child(2) a{
+    background:url(../images/promos/airpods_large.jpg) no-repeat center;
+  }
+  .foreimg:nth-child(3) a{
+    background:url(../images/promos/ipad_pro_large.jpg) no-repeat center;
+  }
+  .foreimg:nth-child(4) a{
+    background:url(../images/promos/iphone_upgrade_large.jpg) no-repeat center;
+  }
+
+}
+.for(@type,@i:1)when(@i<=@cols){
+  .container>.row>.col-@{type}-@{i}{
+    width:@i/@cols*100%;
+    float:left;
+    position:relative;
+  }
+  .container-fuild>.row>.col-@{type}-@{i}{
+    width:@i/@cols*100%;
+    float:left;
+    position:relative;
+  }
+  .for(@type,@i:@i+1);
+}
